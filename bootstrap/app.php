@@ -11,8 +11,8 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+$app = new Ox\Application(
+    dirname(__DIR__)
 );
 
 /*
@@ -28,7 +28,7 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Ox\Console\Kernel::class
+    Ox\Kernel::class
 );
 
 $app->singleton(
