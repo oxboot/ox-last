@@ -1,7 +1,7 @@
 <?php namespace Ox\Bootstrap;
 
 use Illuminate\Contracts\Foundation\Application;
-//use LaravelZero\Framework\Providers\GitVersion\GitVersionServiceProvider;
+use Ox\Providers\GitVersion\GitVersionServiceProvider;
 
 class CoreBindings
 {
@@ -13,6 +13,6 @@ class CoreBindings
      */
     public function bootstrap(Application $app): void
     {
-        //(new GitVersionServiceProvider($app))->register();
+        (new GitVersionServiceProvider($app))->register();
     }
 }
