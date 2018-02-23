@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 use Ox\Commands\Command;
+use Symfony\Component\Filesystem\Filesystem as File;
 
 class SiteCreateCommand extends Command
 {
@@ -24,7 +25,14 @@ class SiteCreateCommand extends Command
      */
     public function handle(): void
     {
-        $this->info("Site {$this->argument('site_name')} created successfully");
+        $file = new File();
+        $site_name = $this->argument('site_name');
+        $site_dir = '/var/www/'.$site_name;
+        if ($file->exists($site_dir)) {
+            $this->failure("Site directory: {$site_dir} already exists");
+        }
+        $file->mkdir($site_dir);
+        $this->info("Site {$site_name} at directory: {$site_dir} created successfully");
     }
 
     /**

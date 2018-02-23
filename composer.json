@@ -25,7 +25,8 @@
     "illuminate/filesystem": "5.6.*",
     "laravel-zero/foundation": "5.6.*",
     "symfony/debug": "4.0.*",
-    "symfony/process": "^4.0"
+    "symfony/filesystem": "4.0.*",
+    "symfony/process": "4.0.*"
   },
   "require-dev": {
     "phpunit/phpunit": "~7.0",

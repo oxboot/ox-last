@@ -34,4 +34,15 @@ abstract class Command extends BaseCommand
     {
         parent::setLaravel($this->app = $laravel);
     }
+
+    /**
+     *
+     * Display an error in the CLI and end with a newline
+     *
+     * @param string $message
+     */
+    public function failure($message) {
+        $this->alert($message);
+        exit(1);
+    }
 }
