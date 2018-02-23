@@ -1,7 +1,7 @@
 <?php namespace Ox\Bootstrap;
 
 use Ox\Providers;
-use LaravelZero\Framework\Components;
+//use LaravelZero\Framework\Components;
 use Illuminate\Contracts\Foundation\Application;
 //use NunoMaduro\LaravelConsoleTask\LaravelConsoleTaskServiceProvider;
 //use NunoMaduro\LaravelConsoleMenu\LaravelConsoleMenuServiceProvider;
@@ -18,7 +18,7 @@ class RegisterProviders extends BaseRegisterProviders
      */
     protected $providers = [
         Providers\Cache\CacheServiceProvider::class,
-        //Providers\Filesystem\FilesystemServiceProvider::class,
+        Providers\Filesystem\FilesystemServiceProvider::class,
         //Providers\Composer\ComposerServiceProvider::class,
         //LaravelDesktopNotifierServiceProvider::class,
         //LaravelConsoleTaskServiceProvider::class,
