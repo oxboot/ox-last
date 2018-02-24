@@ -3,21 +3,21 @@
 use Illuminate\Console\Scheduling\Schedule;
 use Ox\Commands\Command;
 
-class SiteCreateCommand extends Command
+class SiteDeleteCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'site:create {site_name : Name of the site}';
+    protected $signature = 'site:delete {site_name : Name of the site}';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Create a site with giving name';
+    protected $description = 'Delete a site with giving name';
 
     /**
      * Execute the console command.
@@ -27,11 +27,11 @@ class SiteCreateCommand extends Command
         $fs = app('filesystem.symfony');
         $site_name = $this->argument('site_name');
         $site_dir = '/var/www/'.$site_name;
-        if ($fs->exists($site_dir)) {
-            $this->failure("Site directory: {$site_dir} already exists");
+        if (!$fs->exists($site_dir)) {
+            $this->failure("Site directory: {$site_dir} not exists");
         }
-        $fs->mkdir($site_dir);
-        $this->info("Site: {$site_name} at directory: {$site_dir} created successfully");
+        $fs->remove($site_dir);
+        $this->info("Site: {$site_name} at directory: {$site_dir} deleted successfully");
     }
 
     /**

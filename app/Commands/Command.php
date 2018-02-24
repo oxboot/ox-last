@@ -37,12 +37,12 @@ abstract class Command extends BaseCommand
 
     /**
      *
-     * Display an error in the CLI and end with a newline
+     * Display an error in the CLI and terminate command with a newline
      *
      * @param string $message
      */
     public function failure($message) {
-        $this->alert($message);
+        $this->error($message);
         exit(1);
     }
 }

@@ -19,6 +19,7 @@ class RegisterProviders extends BaseRegisterProviders
     protected $providers = [
         Providers\Cache\CacheServiceProvider::class,
         Providers\Filesystem\FilesystemServiceProvider::class,
+        Providers\FilesystemSymfony\FilesystemSymfonyServiceProvider::class,
         //Providers\Composer\ComposerServiceProvider::class,
         //LaravelDesktopNotifierServiceProvider::class,
         //LaravelConsoleTaskServiceProvider::class,
