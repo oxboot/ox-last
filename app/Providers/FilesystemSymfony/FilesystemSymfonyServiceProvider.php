@@ -12,8 +12,10 @@ class FilesystemSymfonyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('filesystem.symfony', function ($app) {
+        $this->app->singleton(FilesystemSymfony::class, function ($app) {
             return new FilesystemSymfony();
         });
+
+        $this->app->alias(FilesystemSymfony::class, 'filesystem.symfony');
     }
 }
