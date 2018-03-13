@@ -20,6 +20,7 @@ class RegisterProviders extends BaseRegisterProviders
         Providers\Cache\CacheServiceProvider::class,
         Providers\Filesystem\FilesystemServiceProvider::class,
         Providers\FilesystemSymfony\FilesystemSymfonyServiceProvider::class,
+        Providers\TemplateMustache\TemplateMustacheServiceProvider::class,
         //Providers\Composer\ComposerServiceProvider::class,
         //LaravelDesktopNotifierServiceProvider::class,
         //LaravelConsoleTaskServiceProvider::class,

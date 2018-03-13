@@ -24,13 +24,23 @@ class SiteCreateCommand extends Command
      */
     public function handle(): void
     {
-        $fs = app('filesystem.symfony');
+        $filesystem = app('filesystem.symfony');
         $site_name = $this->argument('site_name');
         $site_dir = '/var/www/'.$site_name;
-        if ($fs->exists($site_dir)) {
+        if ($filesystem->exists($site_dir)) {
             $this->failure("Site directory: {$site_dir} already exists");
         }
-        $fs->mkdir($site_dir);
+        $filesystem->mkdir($site_dir);
+        $filesystem->dumpFile(
+            '/etc/nginx/sites-available/'.$site_name,
+            app('template.mustache')->render('nginx/site', ['site_name' => $this->argument('site_name')])
+        );
+        $filesystem->symlink(
+            '/etc/nginx/sites-available/'.$site_name,
+            '/etc/nginx/sites-enabled/'.$site_name
+        );
+        $filesystem->chown($site_dir, 'www-data', 'www-data');
+        $utils->exec('service nginx restart');
         $this->info("Site: {$site_name} at directory: {$site_dir} created successfully");
     }
 

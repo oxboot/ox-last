@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 use Ox\Commands\Command;
+use Symfony\Component\Console\Helper\Table;
 
 class SiteListCommand extends Command
 {
@@ -27,7 +28,12 @@ class SiteListCommand extends Command
         $this->info("List of created sites");
         $sites_dir = '/var/www';
         $sites_dir_subdirs = glob($sites_dir.'/*', GLOB_ONLYDIR);
-        var_dump($sites_dir_subdirs);
+        $table = new Table($this->getOutput());
+        $table->setHeaders(['Site Name', 'Site Directory']);
+        foreach($sites_dir_subdirs as $sites_dir_subdir) {
+            $table->setRows([['site_name', $sites_dir_subdir]]);
+        }
+        $table->render();
     }
 
     /**
